@@ -36,15 +36,10 @@ you can pass it to the HTTP request programmatically like so:
 httpRequest "http://httpbin.org/response-headers?param1=${param1}"
 ```
 
-If you wish to save the response to a file, you need to grab a
-workspace. You can do this with a `node` Pipeline step. For
-example:
+If you wish to save the response to a file, you can specify a filename using the `outputFile` parameter.
 
 ```groovy
-def response = httpRequest "http://httpbin.org/response-headers?param1=${param1}"
-node() {
-    writeFile file: 'response.txt', text: response.content
-}
+httpRequest outputFile: 'output.html', url: "https://www.jenkins.io"
 ```
 
 You can access the response status code and content programmatically:
