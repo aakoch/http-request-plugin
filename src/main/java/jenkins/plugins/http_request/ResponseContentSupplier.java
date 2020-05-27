@@ -153,11 +153,12 @@ public class ResponseContentSupplier implements Serializable, AutoCloseable {
 
 	@Override
 	public void close() throws IOException {
-		if (httpclient != null) {
-			httpclient.close();
-		}
+		// https://stackoverflow.com/a/44905792/137581
 		if (contentStream != null) {
 			contentStream.close();
+		}
+		if (httpclient != null) {
+			httpclient.close();
 		}
 	}
 
